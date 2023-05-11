@@ -12,16 +12,16 @@ export default function Collection() {
     return <>
         {data.success == true && <table className="bg-stone-800 rounded-lg w-fit">
             {data.items?.map(i => {
-                return <tr key={i.id}>
-                    <td className="p-4">
-                        <img src={i.thumbnail} className="w-28 h-28 rounded-lg" alt="Album art" />
+                return <tr key={i.id} className="flex w-full">
+                    <td className="p-4 shrink-0 flex items-center grow-0">
+                        <img src={i.thumbnail} className="w-16 md:w-28 w-16 md:h-28 rounded-lg" alt="Album art" />
                     </td>
-                    <td className="p-4">
+                    <td className="p-4 grow">
                         <h2 className="text-stone-100 font-bold tracking-wide">{i.title}</h2>
                         <p className="text-stone-100 text-sm">{i.artist}</p>
                         <p className="text-stone-100 text-sm pb-2">{i.format}</p>
                     </td>
-                    <td className="p-4">
+                    <td className="p-4 shrink-0 flex items-center">
                         <Link to={`/print/${i.id}`} className="w-fit text-stone-100 font-medium tracking-wide px-4 py-2 text-xs bg-indigo-700 hover:bg-indigo-600 transition rounded-lg">PRINT LABEL</Link>
                     </td>
                 </tr>

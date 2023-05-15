@@ -83,11 +83,11 @@ export const loader = async ({ params }: LoaderArgs) => {
         }
       });
     }
-    const canvas = createCanvas(200, 40, 'pdf'),
+    const canvas = createCanvas(200, 48, 'pdf'),
       ctx = canvas.getContext("2d");
     ctx.textBaseline = "top";
     ctx.font = "bold 16px sans-serif";
-    ctx.fillText(`Released ${year}`, 0, 0);
+    ctx.fillText(`Released ${year}`, 8, 0);
     const hours = Math.floor(duration / 3600).toLocaleString('en-US', {
       minimumIntegerDigits: 2,
       useGrouping: false
@@ -100,7 +100,7 @@ export const loader = async ({ params }: LoaderArgs) => {
         minimumIntegerDigits: 2,
         useGrouping: false
       });
-    ctx.fillText(`Runtime: ${hours}:${minutes}:${seconds}`, 0, 16);
+    ctx.fillText(`Runtime: ${hours}:${minutes}:${seconds}`, 8, 16);
     fs.mkdirSync(join(process.cwd(), "public", "generated"), { recursive: true });
     const promise = await new Promise<{success: Boolean, message?: string}>(resolve => {
       const path = join(process.cwd(), "public", "generated", `${id}.pdf`),

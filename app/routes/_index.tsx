@@ -25,6 +25,7 @@ export default function Index() {
         </div>
         <Link to="/collection" className="w-fit text-stone-100 font-medium tracking-wide px-4 py-2 text-xs bg-indigo-700 hover:bg-indigo-600 transition rounded-lg">SELECT FROM COLLECTION</Link>
         <Link to="/enter" className="w-fit text-stone-100 font-medium tracking-wide px-4 py-2 text-xs bg-indigo-700 hover:bg-indigo-600 transition rounded-lg">ENTER DISCOGS URL</Link>
+        <Link to="/manual" className="w-fit text-stone-100 font-medium tracking-wide px-4 py-2 text-xs bg-indigo-700 hover:bg-indigo-600 transition rounded-lg">MANUAL PRINT</Link>
       </>}
       {data.success == false && <p className="text-red-700 text-sm pb-2">{data.message}</p>}
   </>;

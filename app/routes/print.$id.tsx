@@ -108,7 +108,7 @@ export const loader = async ({ params }: LoaderArgs) => {
         cs = canvas.createPDFStream();
       cs.pipe(ws);
       ws.on('finish', () => {
-        exec(`lp ${path}`, (err, stdout, stderr) => {
+        exec(`lp ${!process.env.LP_PARAMS ? "" : " " + process.env.LP_PARAMS}${path}`, (err, stdout, stderr) => {
           if(err || stderr) return resolve({success: false, message: "An error occurred when printing."});
           return resolve({success: true});
         });

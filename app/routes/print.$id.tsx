@@ -30,9 +30,9 @@ export default function Print() {
 export const loader = async ({ params }: LoaderArgs) => {
   const release = await fetch(`https://api.discogs.com/releases/${params.id}?token=${process.env.DISCOGS_KEY}`);
   if(release.status == 200) {
-    const { tracklist, year, artists_sort, title, id }: { tracklist: { duration: string }[], year: number, artists_sort: string, title: string, id: number } = await release.json();
+    const { tracklist, year, artists_sort, title, id }: { tracklist: { duration: string, type_: string }[], year: number, artists_sort: string, title: string, id: number } = await release.json();
     let duration: number = 0;
-    if(tracklist.filter(t => !t.duration).length) {
+    if(tracklist.filter(t => t.type_ == "track" && !t.duration).length) {
       // if not all on discogs, go to spotify or other apis
       // TODO: pagination
       const token = await fetch("https://accounts.spotify.com/api/token?grant_type=client_credentials", {
@@ -69,7 +69,7 @@ export const loader = async ({ params }: LoaderArgs) => {
         return json({success: false, message: "Couldn't get Spotify access token."});
       }
     } else {
-      tracklist.forEach(t => {
+      tracklist.filter(t => t.type_ == "track").forEach(t => {
         const times = t.duration.split(":");
         if(times.length == 3) {
           const hours = Number(times[0]) || 0,

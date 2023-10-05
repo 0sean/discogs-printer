@@ -38,8 +38,8 @@ export async function loader() {
     const { resource_url } = await identity.json(),
       collection = await fetch(`${resource_url}/collection/folders/0/releases?token=${process.env.DISCOGS_KEY}&per_page=100`);
     if (collection.status == 200) {
-      const { releases }: { releases: {release_id: number, date_added: string, basic_information: {thumb: string, artists_sort: string, title: string, formats: {name: string, descriptions: string[]}[]}}[] } = await collection.json(),
-        items = releases.map(r => { return {id: r.release_id, thumbnail: r.basic_information.thumb, artist: r.basic_information.artists_sort, title: r.basic_information.title, format: `${r.basic_information.formats[0].name} (${r.basic_information.formats[0].descriptions.join(", ")})`, date_added: r.date_added} }).sort((a, b) => { return Number(new Date(b.date_added)) - Number(new Date(a.date_added)) });
+      const { releases }: { releases: {id: number, date_added: string, basic_information: {thumb: string, artists_sort: string, title: string, formats: {name: string, descriptions: string[]}[]}}[] } = await collection.json(),
+        items = releases.map(r => { return {id: r.id, thumbnail: r.basic_information.thumb, artist: r.basic_information.artists_sort, title: r.basic_information.title, format: `${r.basic_information.formats[0].name} (${r.basic_information.formats[0].descriptions.join(", ")})`, date_added: r.date_added} }).sort((a, b) => { return Number(new Date(b.date_added)) - Number(new Date(a.date_added)) });
         return json({success: true, items});
     } else {
       return json({success: false, message: "Error fetching collection.", items: []});

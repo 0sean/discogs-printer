@@ -83,7 +83,7 @@ export const loader = async ({ params }: LoaderArgs) => {
         }
       });
     }
-    const canvas = createCanvas(200, 56, 'pdf'),
+    const canvas = createCanvas(200, 64, 'pdf'),
       ctx = canvas.getContext("2d");
     ctx.textBaseline = "top";
     ctx.font = "bold 16px sans-serif";

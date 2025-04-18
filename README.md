@@ -32,3 +32,26 @@ Assuming you have your printer set up and have Node.js and Yarn installed, clone
 
 Once set up and built, you can run Discogs Printer by running `yarn start:with-env`
 > **⁉️ You may want to use PM2 or something similar to run Discogs Printer on startup** (e.g. if you're running on a Raspberry Pi).
+
+<br>
+<blockquote>
+  <details>
+  <summary>License</summary>
+  <br>
+
+    Copyright (C) 2023-2024 0sean
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+</details>
+</blockquote>

@@ -1,53 +1,33 @@
-# Welcome to Remix!
+# 🖨️ Discogs Printer
+<img align="right" width="400" height="400" src="https://github.com/user-attachments/assets/e904be92-5014-4ba8-ad25-04b7b6f2869c">
+<h4>Print labels for your Discogs collection</h4>
+<ul>
+  <li>Connects to your Discogs account to display your Discogs collection</li>
+  <li>Fetches data from Spotify if it cannot be found on Discogs</li>
+  <li>Runs as a web app (lightweight enough to run on a Pi Zero)</li>
+  <li>Uses <code>lp</code> to print (intended to be run on Linux)</li>
+  <li>Should work with any label printer that works on Linux</li>
+</ul>
+<br><br><br><br><br><br><br><br><br>
 
-- [Remix Docs](https://remix.run/docs)
+## 📄 Supported label printers
+Currently, the only officially supported label printer is the Brother QL-700, however this will work with other label printers **as long as they work with Linux**.
 
-## Development
+Behind the scenes, Discogs Printer uses the `lp` command to print a PDF of the label - as long as you can get your label printer working with `lp` printing a PDF, it'll work.
 
-From your terminal:
+> **🖨️ Have the Brother QL-700?** View the setup guide if you need to know how to set it up (you can skip this if you already have it set up)
 
-```sh
-npm run dev
-```
+> **✅ Got it working with another printer?** Feel free to open a PR and add setup instructions/any extra parameters needed to make it work.
 
-This starts your app in development mode, rebuilding assets on file changes.
+## 💿 Setup
+Assuming you have your printer set up and have Node.js and Yarn installed, clone the repository and:
+1. Install build dependencies `sudo apt install libpaxman-1-dev libcairo2-dev libpango1.0-dev libjpeg9-dev libgif-dev`
+2. Install dependencies `yarn install` (if running on a Pi Zero, you may need to use `yarn install --network-timeout 100000`)
+3. Create a `.env` file in the root of the repository and add the following environment variables:
+   - `DISCOGS_KEY` - this is your Discogs personal access token which can be obtained from [here](https://www.discogs.com/settings/developers)
+   - `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` - create a Spotify app [here](https://developer.spotify.com/dashboard)
+   - (optional) `LP_PARAMS` - this is passed to `lp` when printing, it is likely required to make printing work properly, but depends on your printer.
+     > **🖨️ Have the Brother QL-700?** Set this to the following value for printing to work correctly: `"-o media=62x29 -o landscape"`
+4. Build the app by running `yarn build`
 
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
-
-### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
-
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
-```
+Once set up and built, you can run Discogs Printer by running `yarn start:with-env`

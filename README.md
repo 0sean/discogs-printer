@@ -15,7 +15,7 @@ Currently, the only officially supported label printer is the Brother QL-700, ho
 
 Behind the scenes, Discogs Printer uses the `lp` command to print a PDF of the label - as long as you can get your label printer working with `lp` printing a PDF, it'll work.
 
-> **🖨️ Have the Brother QL-700?** View the [setup guide](QL700.md) if you need to know how to set it up (you can skip this if you already have it set up)
+> **🖨️ Have the Brother QL-700?** View the [setup guide](QL700.md) if you need to know how to get it working in Linux
 
 > **✅ Got it working with another printer?** Feel free to open a PR and add setup instructions/any extra parameters needed to make it work.
 

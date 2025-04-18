@@ -8,6 +8,7 @@
   <li>Uses <code>lp</code> to print (intended to be run on Linux)</li>
   <li>Should work with any label printer that works on Linux</li>
 </ul>
+<br><br><br><br><br><br>
 
 ## 📄 Supported label printers
 Currently, the only officially supported label printer is the Brother QL-700, however this will work with other label printers **as long as they work with Linux**.

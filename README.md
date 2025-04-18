@@ -30,4 +30,4 @@ Assuming you have your printer set up and have Node.js and Yarn installed, clone
      > **🖨️ Have the Brother QL-700?** Set this to the following value for printing to work correctly: `"-o media=62x29 -o landscape"`
 4. Build the app by running `yarn build`
 
-Once set up and built, you can run Discogs Printer by running `yarn start:with-env`
+Once set up and built, you can run Discogs Printer by running `yarn start:with-env` - you may want to use PM2 or something similar to run Discogs Printer on startup (e.g. if you're running on a Raspberry Pi).
